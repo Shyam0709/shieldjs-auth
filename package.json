@@ -1,0 +1,37 @@
+{
+  "name": "shieldjs",
+  "version": "1.0.0",
+  "description": "Spring Security–like authentication and authorization module for Node.js and Express",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node example/server.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "auth",
+    "authentication",
+    "authorization",
+    "security",
+    "express",
+    "jwt",
+    "nodejs",
+    "oauth2"
+  ],
+  "author": "Shyam Sundar",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "supertest": "^7.1.1"
+  }
+}
