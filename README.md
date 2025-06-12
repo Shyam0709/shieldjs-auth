@@ -1,4 +1,4 @@
-# ShieldJS 🛡️
+# ShieldJS-AUTH 🛡️
 A Spring Security–like authentication and authorization module for Node.js + Express. Supports email/password, Google OAuth, JWT access & refresh tokens, and role-based access.
 
 ## 🚀 Features
@@ -13,7 +13,7 @@ A Spring Security–like authentication and authorization module for Node.js + E
 ## 📦 Installation
 
 ```bash
-npm install shieldjs
+npm install shieldjs-auth
 
 
 #Usage Example
@@ -61,7 +61,7 @@ GOOGLE_CLIENT_SECRET=your-google-client-secret
 
 📁 Project Structure
 
-shieldjs/
+shieldjs-auth/
 ├── .env
 ├── .gitignore
 ├── README.md
@@ -81,7 +81,7 @@ shieldjs/
     └── auth.test.js 
 
 🔧 Module Exports
-ShieldJS exposes the following utilities:
+ShieldJS-Auth exposes the following utilities:
 
 registerHandler – handles new user registration
 
