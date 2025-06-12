@@ -1,5 +1,5 @@
 {
-  "name": "shieldjs",
+  "name": "shieldjs-auth",
   "version": "1.0.0",
   "description": "Spring Security–like authentication and authorization module for Node.js and Express",
   "main": "src/index.js",
