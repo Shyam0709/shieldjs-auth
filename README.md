@@ -10,8 +10,6 @@ A Spring Security–like authentication and authorization module for Node.js + E
 - 🔒 Role-based authorization
 - 🧱 MongoDB/Mongoose integration
 
-  
-
 ## 📦 Installation
 
 ```bash
@@ -20,35 +18,29 @@ npm install shieldjs-auth
 
 #Usage Example
 
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import shield from 'shieldjs';
+import shield from 'shieldjs'; // or your actual package name
 
-dotenv.config();
-const app = express();
-app.use(express.json());
-app.use(shield.rateLimiter); // Optional: apply rate limiting
+// Example: Using middleware
+app.use(shield.rateLimiter);
 
 // Auth routes
-app.post('/register', shield.registerHandler);
-app.post('/login', shield.localAuthHandler);
-app.post('/token', shield.refreshTokenHandler);
+app.post('/register', shield.auth.registerHandler);
+app.post('/login', shield.auth.localAuthHandler);
+app.post('/token', shield.refresh.refreshTokenHandler);
 
 // Google OAuth routes
-app.get('/auth/google', shield.googleAuthHandler);
-app.get('/auth/google/callback', shield.googleCallbackHandler);
+app.get('/auth/google', shield.googleAuth);
+app.get('/auth/google/callback', shield.googleAuthCallback);
 
 // Protected route
-app.get('/admin', shield.authenticateJWT, shield.authorizeRole('admin'), (req, res) => {
-  res.send("Welcome, Admin!");
-});
-
-// Connect to MongoDB and start the server
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => app.listen(5000, () => console.log('Server running on port 5000')))
-  .catch((err) => console.error(err));
-
+app.get(
+  '/admin',
+  shield.middleware.requireAuth,
+  shield.middleware.requireRole('admin'),
+  (req, res) => {
+    res.send("Welcome, Admin!");
+  }
+);
 
 
 🔐 Environment Variables
@@ -83,22 +75,21 @@ shieldjs-auth/
     └── auth.test.js 
 
 🔧 Module Exports
-ShieldJS-Auth exposes the following utilities:
 
-registerHandler – handles new user registration
+ShieldJS-Auth exposes the following utilities as properties of the default export:
 
-localAuthHandler – email/password login
+auth: All authentication-related functions (e.g., auth.registerHandler, auth.localAuthHandler)
 
-refreshTokenHandler – refreshes access tokens
+middleware: Middleware functions (e.g., middleware.requireAuth, middleware.requireRole)
 
-googleAuthHandler – initiates Google OAuth flow
+refresh: Token/session refresh utilities
 
-googleCallbackHandler – handles Google OAuth callback
+setupGoogleOAuth: Function to set up Google OAuth
 
-authenticateJWT – protects routes with access token
+googleAuth: Initiates Google OAuth flow
 
-authorizeRole(role) – allows access only to specific roles
+googleAuthCallback: Handles Google OAuth callback
 
-rateLimiter – rate limiting middleware for Express
+rateLimiter: Express rate limiting middleware
 
 
