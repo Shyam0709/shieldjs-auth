@@ -10,6 +10,8 @@ A Spring Security–like authentication and authorization module for Node.js + E
 - 🔒 Role-based authorization
 - 🧱 MongoDB/Mongoose integration
 
+  [![npm version](https://img.shields.io/npm/v/shieldjs-auth)](https://www.npmjs.com/package/shieldjs-auth)
+
 ## 📦 Installation
 
 ```bash
