@@ -18,19 +18,17 @@ npm install shieldjs-auth
 
 #Usage Example
 
-import shield from 'shieldjs'; // or your actual package name
+import shield from 'shieldjs-auth'; 
 
-// Example: Using middleware
-app.use(shield.rateLimiter);
 
 // Auth routes
-app.post('/register', shield.auth.registerHandler);
-app.post('/login', shield.auth.localAuthHandler);
-app.post('/token', shield.refresh.refreshTokenHandler);
+app.post('/register', shield.auth.register);
+app.post('/login', shield.auth.login);
+app.post('/token', shield.refresh.refreshAccessToken);
 
 // Google OAuth routes
-app.get('/auth/google', shield.googleAuth);
-app.get('/auth/google/callback', shield.googleAuthCallback);
+app.get('/auth/google', shield.oauth.setupGoogleOAuth);
+app.get('/auth/google/callback', shield.oauth.googleAuthCallback);
 
 // Protected route
 app.get(
